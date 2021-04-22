@@ -149,7 +149,7 @@ final class PersonTest {
         
         helden.add(new Person("Curry", "Arthur", 2000));
         helden.add(new Person("Parker", "Peter", 0));
-        helden.add(new Person("Wayne", "Bruce", 400));
+        helden.add(new Person("Walter4444444", "Bruce", 400));
         helden.add(new Person("Banner", "Bruce", 33413));
         helden.add(new Person("Stark", "Tony", 3000));
         
