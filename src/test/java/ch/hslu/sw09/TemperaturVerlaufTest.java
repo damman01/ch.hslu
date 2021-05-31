@@ -16,7 +16,7 @@ import org.junit.jupiter.api.Test;
 
 /**
  *
- * @author Dominic Ammann at HSLU
+ * @author Dominic Ammann
  */
 public class TemperaturVerlaufTest {
 
