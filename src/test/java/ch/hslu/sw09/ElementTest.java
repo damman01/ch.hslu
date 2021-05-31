@@ -13,48 +13,6 @@ public class ElementTest {
     void testEqualsContract() {
         EqualsVerifier.forClass(Element.class).suppress(Warning.NONFINAL_FIELDS).verify();
     }
-    /**
-     * Test Stickstoff bei Raumtemp
-     * Mit float an Konstruktor
-     */
-    @Test
-    public void testGetAggregationOfGold() {
-        final Element gold = new Element ("Gold", 3000f, 1064.18f, 2970f);
-        System.out.println(gold);
-        assertEquals("gasförmig", gold.getAggregation());
-    }
-    
-    
-    /**
-     * Test Quecksilber bei Raumtemp
-     * Mit 3* Temperatur an Konstruktor
-     */
-    @Test
-    public void testGetAggregationOfMagnesium() {
-        final Element magnesium = new Element ("Magnesium", new Temperatur (800f), new Temperatur (650f), new Temperatur (1110f));
-        System.out.println(magnesium);
-        assertEquals("flüssig", magnesium.getAggregation());
-    }
-    
-    /**
-     * Test Blei bei Raumtemp
-     * Mit 2*Temperatur an Konstruktor
-     * 
-     */
-    @Test
-    public void testGetAggregationOfBarium() {
-        final Element barium = new Element ("Barium", new Temperatur (727f), new Temperatur (1637f));
-        System.out.println(barium);
-        assertEquals("fest", barium.getAggregation());
-    }
-    
-    /**
-     * Test getTemp bei 2 Temperaturen an Konstruktor
-     */
-    @Test
-    public void testGetDegreeCelsius() {
-        assertEquals(20.0f, new Element("Elemenenemt", new Temperatur (30f), new Temperatur (40f)).getDegreeCelsius());
-    }
     
     /**
      * Test der Blei Klasse
@@ -62,7 +20,9 @@ public class ElementTest {
      */
     @Test
     public void testBlei(){
-        assertEquals("fest", new Blei().getAggregation());
+        Blei blei = new Blei(20.0f);
+        assertEquals("fest", blei.getAggregation().getName());
+        System.out.println(blei);
     }
     
     /**
@@ -71,7 +31,7 @@ public class ElementTest {
      */
     @Test
     public void testQuecksilber(){
-        assertEquals("gasförmig", new Quecksilber(360f).getAggregation());
+        assertEquals("gasförmig", new Quecksilber(360f).getAggregation().getName());
     }
     
     /**
@@ -80,7 +40,7 @@ public class ElementTest {
      */
     @Test
     public void testStickstoff(){
-        assertEquals("fest", new Stickstoff(new Temperatur(-270f)).getAggregation());
+        assertEquals("fest", new Stickstoff(-270f).getAggregation().getName());
     }
 }
 

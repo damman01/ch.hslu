@@ -11,14 +11,6 @@ package ch.hslu.sw09;
  */
 public final class Quecksilber extends Element{
 
-    public Quecksilber() {
-        super("Quecksilber", new Temperatur(-30.83f), new Temperatur(356.7f));
-    }
-    
-    public Quecksilber(Temperatur temp) {
-        super("Quecksilber", temp,new Temperatur(-30.83f), new Temperatur(356.7f));
-    }
-    
     public Quecksilber(float temp) {
         super("Quecksilber", temp,(-30.83f), (356.7f));
     }

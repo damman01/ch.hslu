@@ -4,7 +4,6 @@
  * This library is free software;
  */
 package ch.hslu.exercises;
-import ch.hslu.sw05.shape.Shape;
 
 /**
  * Definiert eine abstrakte Form mit einer (x,y)-Position. Verlangt Methoden zur

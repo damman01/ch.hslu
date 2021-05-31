@@ -15,7 +15,6 @@
  */
 package ch.hslu.sw06;
 
-import ch.hslu.demo.*;
 import java.util.Objects;
 
 /**
