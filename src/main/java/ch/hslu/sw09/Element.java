@@ -5,28 +5,43 @@
  */
 package ch.hslu.sw09;
 
-import ch.hslu.sw08.*;
 import java.util.Objects;
 
 /**
  * 
  * @author Dominic Ammann
  */
-public class Element {
+public abstract class Element {
     
-    private final Temperatur temp;
-    private final Temperatur pSchmelz;
-    private final Temperatur pKondens;
+    public enum AggregateState{
+        LIQUID("flüssig"), SOLID("fest"), GAS("gasförmig");
+        private final String name;
+
+        private AggregateState(String name) {
+            this.name = name;
+        }
+        
+        public String getAggregate() {
+            return name;
+        }
+    }
+    
+    protected String element;
+    protected Temperatur temp;
+    protected Temperatur pSchmelz;
+    protected Temperatur pKondens;
     
     
     /**
      * Konstruktor für Element mit Übergabe von 3 float Werten
+     * @param element Name des Elements
      * @param tempvar Aktuelle Temperatur
      * @param pSchmelzvar Schmelzpunkt 
      * @param pKondensvar Kondensationspunkt 
      */
-    public Element(float tempvar, float pSchmelzvar, float pKondensvar){
+    public Element(String element, float tempvar, float pSchmelzvar, float pKondensvar){
         
+        this.element = element;
         this.temp = new Temperatur (tempvar);
         this.pSchmelz = new Temperatur (pSchmelzvar);
         this.pKondens = new Temperatur (pKondensvar);   
@@ -34,31 +49,34 @@ public class Element {
     
     /**
      * Konstruktor für Element mit Übergabe von 3 Temperaturen
+     * @param element Name des Elements
      * @param temp Aktuelle Temperatur
      * @param pSchmelz Schmelzpunkt
      * @param pKondens Kondensationspunkt
      */
-    public Element(Temperatur temp, Temperatur pSchmelz, Temperatur pKondens){
+    public Element(String element, Temperatur temp, Temperatur pSchmelz, Temperatur pKondens){
         
+        this.element = element;
         this.temp = temp;
         this.pSchmelz = pSchmelz;
         this.pKondens = pKondens;   
     }
     /**
      * Konstruktor für Element bei Raumtemperatur mit Übergabe von 3 Temperaturen
-     * @param temp Aktuelle Temperatur
+     * @param element Name des Elements
      * @param pSchmelz Schmelzpunkt
      * @param pKondens Kondensationspunkt
      */
-    public Element(Temperatur pSchmelz, Temperatur pKondens){
+    public Element(String element, Temperatur pSchmelz, Temperatur pKondens){
         
+        this.element = element;
         this.temp = new Temperatur();
         this.pSchmelz = pSchmelz;
         this.pKondens = pKondens;
     }
+        
 
     /**Ausgabe des Aggregatszustandes
-     * @param temp aktuelle Temperatur
      * @return Agregatszustand des Elements bei der Temperatur temp
      */
     public String getAggregation(){
@@ -100,9 +118,13 @@ public class Element {
         return temp.getDegreeCelsius();
     }
     
+    public String getElement(){
+        return this.element;
+    }
+    
     @Override
     public String toString() {
-        return "Element{" + "temp=" + temp + ", pSchmelz=" + pSchmelz + ", pKondens=" + pKondens + '}';
+        return "Element{" + element + " temp=" + temp + ", pSchmelz=" + pSchmelz + ", pKondens=" + pKondens + '}';
     }
 
     /**
@@ -112,12 +134,11 @@ public class Element {
      */
     @Override
     public int hashCode() {
-        return Objects.hash(this.temp, this.pSchmelz, this.pKondens);
+        return Objects.hash(this.element, this.temp, this.pSchmelz, this.pKondens);
     }
 
     /**
      * Equals Methode 
-     * @param zweites Temperatur Objekt
      * @return > = pos, = = 0, < = neg
      */
     @Override
@@ -129,6 +150,6 @@ public class Element {
             return false;
         }
         final Element other = (Element) obj;
-            return Objects.equals(this.temp, other.temp) && Objects.equals(this.pKondens, other.pKondens) && Objects.equals(this.pSchmelz, other.pSchmelz);
+            return Objects.equals(this.element, other.element) && Objects.equals(this.temp, other.temp) && Objects.equals(this.pKondens, other.pKondens) && Objects.equals(this.pSchmelz, other.pSchmelz);
         }
 }

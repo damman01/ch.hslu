@@ -5,72 +5,91 @@
  */
 package ch.hslu.sw09;
 
-import ch.hslu.sw08.*;
 import java.util.Objects;
 
 /**
  *
  * @author domin
  */
-public final class Temperatur implements Comparable<Temperatur>{
-    
-  private float degreeCelsius;
+public final class Temperatur implements Comparable<Temperatur> {
 
-  /**
-   * Raumtemperatur von 20°C
-   */
-  public Temperatur() { 
-    this(20.0f);
-  }
+    public static final float KELVIN_OFFSET = 273.15f;
+    private float kelvin;
 
-  
-  public Temperatur(float degreeCelsius) { 
-    this.degreeCelsius = degreeCelsius;
-  }
+    /**
+     * Raumtemperatur von 20°C
+     */
+    public Temperatur() {
+        this(20.0f + KELVIN_OFFSET);
+    }
 
-  public float getDegreeCelsius() { 
-    return this.degreeCelsius;
-  }
+    public Temperatur(float kelvin) {
+        this.kelvin = kelvin;
+    }
 
-  public void setDegreeCelsius(float degreeCelsius) { 
-    this.degreeCelsius = degreeCelsius;
-  }
+    public float getDegreeCelsius() {
+        return Temperatur.kelvinToCelsius(this.kelvin);
+    }
 
-  public float getDegreeKelvin() { 
-    return this.degreeCelsius + 273.15f;
-  }
+    public void setKelvin(float kelvin) {
+        this.kelvin = kelvin;
+    }
 
-  public float getDegreeFahrenheit() { 
-    return this.degreeCelsius * 1.8f + 32;
-  }
+    public float getDegreeKelvin() {
+        return this.kelvin;
+    }
 
-  public void increaseTemperatur(float degreeCelsius) { 
-    this.degreeCelsius += degreeCelsius;
-  }
+    public float getDegreeFahrenheit() {
+        return (this.kelvin - Temperatur.KELVIN_OFFSET) * 1.8f + 32;
+    }
 
-  public void decreaseTemperatur(float degreeCelsius) { 
-    this.degreeCelsius -= degreeCelsius;
-  }
-  
-  /**
-     * Vergleichder Temperatur
+    public void increaseTemperatur(float kelvin) {
+        this.kelvin += kelvin;
+    }
+
+    public void decreaseTemperatur(float kelvin) {
+        this.kelvin -= kelvin;
+    }
+
+    /**
+     * Konvertiert eine Temperatur von °Celsius in °Kelvin
+     *
+     * @param celsius Wert der Temperatur die umgrechnet werden soll
+     * @return Wert der Temperatur in Kelvin
+     */
+    public static float celsiusToKelvin(float celsius) {
+        return celsius + Temperatur.KELVIN_OFFSET;
+    }
+
+    /**
+     * Konvertiret eine Temperatur von °Kelvin in °Celsius
+     *
+     * @param kelvin Wert der Temperatur die umgrechnet werden soll
+     * @return Wert der Temperatur in °Celsius
+     */
+    public static float kelvinToCelsius(float kelvin) {
+        return kelvin - Temperatur.KELVIN_OFFSET;
+    }
+
+    /**
+     * Vergleich der Temperatur
+     *
      * @param other Temperatur die verglichen wird
      * @return <[-1], =[0], oder >[+1]
      */
     @Override
     public int compareTo(Temperatur other) {
-        return Float.compare(this.degreeCelsius, other.degreeCelsius);
+        return Float.compare(this.kelvin, other.kelvin);
     }
-    
-    
+
     @Override
     public String toString() {
-        return "Temperatur{" + "degreeCelsius=" + degreeCelsius + '}';
+        return "Temperatur{" + "Kelvin=" + kelvin + '}';
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.degreeCelsius);
+        return Objects.hash(this.kelvin);
     }
 
     @Override
@@ -82,6 +101,6 @@ public final class Temperatur implements Comparable<Temperatur>{
             return false;
         }
         final Temperatur other = (Temperatur) obj;
-            return Objects.equals(this.degreeCelsius, other.degreeCelsius);
-        }
+        return Objects.equals(this.kelvin, other.kelvin);
     }
+}
