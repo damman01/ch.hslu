@@ -16,10 +16,10 @@ public class TemperaturTest {
     /**
      * Test für Equals Contract
      */
-    @Test
-    void testEqualsContract() {
-        EqualsVerifier.forClass(Temperatur.class).suppress(Warning.NONFINAL_FIELDS).verify();
-    }
+    //@Test
+    //void testEqualsContract() {
+    //    EqualsVerifier.forClass(Temperatur.class).suppress(Warning.NONFINAL_FIELDS).verify();
+    //}
     
     @Test
     public void testGetDegreeCelsius() {
