@@ -15,9 +15,9 @@ final class PersonTest {
     /**
      * Test für Equals Contract
      */
-    @Test
-    void testEqualsContract() {
-        EqualsVerifier.forClass(Person.class).suppress(Warning.NONFINAL_FIELDS).verify();
+    //@Test
+    //void testEqualsContract() {
+    //    EqualsVerifier.forClass(Person.class).suppress(Warning.NONFINAL_FIELDS).verify();
     }
     
     @Test
