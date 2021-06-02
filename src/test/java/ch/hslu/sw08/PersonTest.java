@@ -93,7 +93,7 @@ final class PersonTest {
     
     /**
      * Test der compareTo Methode
-     * 4000 < 5000
+     * "4000 < 5000"
      */
     @Test
     void testCompareToKleinerAls(){
@@ -102,7 +102,7 @@ final class PersonTest {
     
     /**
      * Test der compareTo Methode
-     * 6000 > 5000
+     * "6000 > 5000"
      */
     @Test
     void testCompareToGleich(){
@@ -121,7 +121,7 @@ final class PersonTest {
     
     /**
      * Test PersonNameComparator
-     * Curry < Zemo
+     * "Curry < Zemo"
      */
     @Test
     void testPersonNameComparator() {
@@ -132,7 +132,7 @@ final class PersonTest {
     
     /**
      * Test PersonNameComparator
-     * Atlana > Arthur
+     * "Atlana > Arthur"
      */
     @Test
     void testPersonNameComparatorSame() {
