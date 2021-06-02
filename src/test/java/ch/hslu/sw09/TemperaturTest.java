@@ -1,17 +1,14 @@
 package ch.hslu.sw09;
 
-import nl.jqno.equalsverifier.EqualsVerifier;
-import nl.jqno.equalsverifier.Warning;
+
+import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.offset;
 
-import org.junit.jupiter.api.Test;
+import nl.jqno.equalsverifier.EqualsVerifier;
+import nl.jqno.equalsverifier.Warning;
 
-/**
- *
- * @author Dominic Ammann at HSLU
- */
 public class TemperaturTest {
 
     /**
@@ -62,5 +59,4 @@ public class TemperaturTest {
     public void testToString() {
         assertThat(new Temperatur().toString()).startsWith("Temperatur{").contains("293").endsWith("293.15}");
     }
-
 }
