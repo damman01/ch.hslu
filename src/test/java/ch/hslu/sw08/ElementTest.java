@@ -12,7 +12,7 @@ public class ElementTest {
     //@Test
     //void testEqualsContract() {
     //    EqualsVerifier.forClass(Element.class).suppress(Warning.NONFINAL_FIELDS).verify();
-    }
+    //}
     /**
      * Test Stickstoff bei Raumtemp
      * Mit float an Konstruktor
