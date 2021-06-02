@@ -94,7 +94,7 @@ public abstract class Element {
      * Berechnung des HashCodes wird aus den 3 Objekten temp, pSchmelz und pKondesn
      * berechnet
      * 
-     * @return hashCode
+     * @return hashCode aus Objekten
      */
     @Override
     public final int hashCode() {
@@ -104,7 +104,7 @@ public abstract class Element {
     /**
      * Equals Methode
      * 
-     * @return > = pos, = = 0, < = neg
+     * @return "kleiner als ist -1, gleich ist 0, grösser als ist +1"
      */
     @Override
     public final boolean equals(Object obj) {

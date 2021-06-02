@@ -45,7 +45,6 @@ public class Element extends Temperatur {
     }
     /**
      * Konstruktor für Element bei Raumtemperatur mit Übergabe von 3 Temperaturen
-     * @param temp Aktuelle Temperatur
      * @param pSchmelz Schmelzpunkt
      * @param pKondens Kondensationspunkt
      */
@@ -57,7 +56,6 @@ public class Element extends Temperatur {
     }
 
     /**Ausgabe des Aggregatszustandes
-     * @param temp aktuelle Temperatur
      * @return Agregatszustand des Elements bei der Temperatur temp
      */
     public String getAggregation(){
@@ -116,8 +114,8 @@ public class Element extends Temperatur {
 
     /**
      * Equals Methode 
-     * @param zweites Temperatur Objekt
-     * @return > = pos, = = 0, < = neg
+     * @param obj zweites Temperatur Objekt
+     * @return "kleiner als ist -1, gleich ist 0, grösser als ist +1"
      */
     @Override
     public boolean equals(Object obj) {

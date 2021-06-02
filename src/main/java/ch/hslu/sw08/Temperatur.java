@@ -9,7 +9,7 @@ import java.util.Objects;
 
 /**
  *
- * @author domin
+ * @author Dominic Ammann
  */
 public class Temperatur implements Comparable<Temperatur>{
     
@@ -54,7 +54,7 @@ public class Temperatur implements Comparable<Temperatur>{
   /**
      * Vergleichder Temperatur
      * @param other Temperatur die verglichen wird
-     * @return <[-1], =[0], oder >[+1]
+     * @return "kleiner als ist -1, gleich ist 0, grösser als ist +1"
      */
     @Override
     public int compareTo(Temperatur other) {

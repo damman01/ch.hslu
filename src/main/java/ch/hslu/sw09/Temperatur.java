@@ -75,7 +75,7 @@ public final class Temperatur implements Comparable<Temperatur> {
      * Vergleich der Temperatur
      *
      * @param other Temperatur die verglichen wird
-     * @return <[-1], =[0], oder >[+1]
+     * @return "kleiner als ist -1, gleich ist 0, grösser als ist +1"
      */
     @Override
     public int compareTo(Temperatur other) {

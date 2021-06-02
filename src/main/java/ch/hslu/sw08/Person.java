@@ -71,7 +71,7 @@ public final class Person implements Comparable<Person>{
     /**
      * Vergleich auf Basis der ID
      * @param other Person die verglichen wird
-     * @return <, =, oder > als
+     * @return "kleiner als ist -1, gleich ist 0, grösser als ist +1"
      */
     @Override
     public int compareTo(Person other) {
