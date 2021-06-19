@@ -1,11 +1,9 @@
 package ch.hslu.sw08;
 
-import nl.jqno.equalsverifier.EqualsVerifier;
-import nl.jqno.equalsverifier.Warning;
-import org.junit.jupiter.api.Test;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.offset;
+
+import org.junit.jupiter.api.Test;
 
 
 /**
