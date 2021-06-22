@@ -42,9 +42,9 @@ public final class Temperatur implements Comparable<Temperatur> {
     /**
      * Methode die ein Temperaturobjekt mit der Einheit °Kelvin erzeugt
      * 
-     * @param kelvin
+     * @param kelvin Wert der Temperatur in Kelvin
      * @return Temperaturobjekt
-     * @throws IllegalArgumentException
+     * @throws IllegalArgumentException Wird bei Eingabe einer falschen Temperatur geworfen
      */
     public static Temperatur createFromKelvin(final float kelvin) throws IllegalArgumentException {
         return new Temperatur(kelvin);
@@ -53,9 +53,9 @@ public final class Temperatur implements Comparable<Temperatur> {
     /**
      * Methode die ein Temperaturobjekt mit der Einheit °Celsius erzeugt
      * 
-     * @param celsius
+     * @param celsius Wert der Temperatur in Celsius
      * @return Temperaturobjekt
-     * @throws IllegalArgumentException
+     * @throws IllegalArgumentException Wird bei Eingabe einer falschen Temperatur geworfen
      */
     public static Temperatur createFromCelsius(final float celsius) throws IllegalArgumentException {
         return new Temperatur(Temperatur.celsiusToKelvin(celsius));
