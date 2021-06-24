@@ -6,6 +6,34 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch Main",
+            "request": "launch",
+            "mainClass": "ch.hslu.sw12.Main",
+            "projectName": "oop_exercises"
+        },
+        {
+            "type": "java",
+            "name": "Launch AppW11",
+            "request": "launch",
+            "mainClass": "ch.hslu.sw11.AppW11",
+            "projectName": "oop_exercises"
+        },
+        {
+            "type": "java",
+            "name": "Launch App",
+            "request": "launch",
+            "mainClass": "ch.hslu.sw11.App",
+            "projectName": "oop_exercises"
+        },
+        {
+            "type": "java",
+            "name": "Launch Main",
+            "request": "launch",
+            "mainClass": "ch.hslu.sw11.Main",
+            "projectName": "oop_exercises"
+        },
+        {
+            "type": "java",
             "name": "Launch Current File",
             "request": "launch",
             "mainClass": "${file}"

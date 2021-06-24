@@ -14,24 +14,25 @@ import java.beans.PropertyChangeListener;
 public class Fahrzeug implements Switchable{
 
     public String model;
-    public State state;
+    public Status state;
     private Motor motor;
     private Licht lichtVoll;
     private Licht lichtAbblend;
 
     public Fahrzeug(final String model) {
-        this.state = State.OFF;
+        this.state = Status.OFF;
         // Komponenten erzeugen
         this.motor = new Motor();
         this.lichtVoll = new Licht();
         this.lichtAbblend = new Licht();
+        this.model = model;
 
         // Als Listener registrieren
         this.motor.addPropertyChangeListener(new PropertyChangeListener(){
             
             @Override
             public void propertyChange(final PropertyChangeEvent event) {
-                handleMotorEvent("eventVomMotor", event);
+                handleMotorEvent("Motor", event);
             }
         });
 
@@ -40,7 +41,7 @@ public class Fahrzeug implements Switchable{
 
             @Override
             public void propertyChange(PropertyChangeEvent event) {
-                handleLightEvent("eventVolllicht", event);
+                handleLichtEvent("Volllicht", event);
             }
             
         });
@@ -50,7 +51,7 @@ public class Fahrzeug implements Switchable{
 
             @Override
             public void propertyChange(PropertyChangeEvent event) {
-                handleLightEvent("eventAbblendlicht", event);
+                handleLichtEvent("Abblendlicht", event);
             }
             
         });
@@ -62,7 +63,7 @@ public class Fahrzeug implements Switchable{
      * @param event Event
      */
     private void handleMotorEvent(String eventVomMotor, PropertyChangeEvent event) {
-        System.out.println("MotorTest");
+        System.out.println("Motor [" + eventVomMotor + "] [" + event.getNewValue() + "] ");
     }
 
     
@@ -70,14 +71,14 @@ public class Fahrzeug implements Switchable{
      * @param eventVomLicht Vom Licht geworfener Event
      * @param event Event
      */
-    private void handleLightEvent(String eventVomLicht, PropertyChangeEvent event) {
-        System.out.println("LichtTest");
+    private void handleLichtEvent(String eventVomLicht, PropertyChangeEvent event) {
+        System.out.println("Licht [" + eventVomLicht + "] [" + event.getNewValue() + "[ ");
     }
 
 
     @Override
     public void switchon() {
-        this.state = State.ON;
+        this.state = Status.ON;
         this.motor.switchon();
         this.lichtAbblend.switchon();       
     }
@@ -85,7 +86,7 @@ public class Fahrzeug implements Switchable{
 
     @Override
     public void switchoff() {
-        this.state = State.OFF;
+        this.state = Status.OFF;
         this.motor.switchoff();
         this.lichtAbblend.switchoff();        
     }
@@ -93,13 +94,13 @@ public class Fahrzeug implements Switchable{
 
     @Override
     public boolean isSwitchedOn() {
-        return this.state.compareTo(State.ON) == 0;
+        return this.state.compareTo(Status.ON) == 0;
     }
 
 
     @Override
     public boolean isSwitchedOff() {
-        return this.state.compareTo(State.OFF) == 0;
+        return this.state.compareTo(Status.OFF) == 0;
     }
 
     /**

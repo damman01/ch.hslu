@@ -10,7 +10,7 @@ import java.util.*;
 public class Motor implements Switchable {
 
     private int rpm = 0;
-    private State state = State.OFF;
+    private Status state = Status.OFF;
     private final List<PropertyChangeListener> changeListeners = new ArrayList<PropertyChangeListener>();
 
     /**
@@ -28,8 +28,8 @@ public class Motor implements Switchable {
     @Override
     public void switchon() {
         if (isSwitchedOff()) {
-            this.state = State.ON;
-            final PropertyChangeEvent pcEvent = new PropertyChangeEvent(this, "state", State.OFF, State.ON);
+            this.state = Status.ON;
+            final PropertyChangeEvent pcEvent = new PropertyChangeEvent(this, "Status", Status.OFF, Status.ON);
             this.firePropertyChangeEvent(pcEvent);
         }
         this.rpm = 1000;
@@ -42,8 +42,8 @@ public class Motor implements Switchable {
     @Override
     public void switchoff() {
         if (isSwitchedOn()) {
-            this.state = State.OFF;
-            final PropertyChangeEvent pcEvent = new PropertyChangeEvent(this, "state", State.ON, State.OFF);
+            this.state = Status.OFF;
+            final PropertyChangeEvent pcEvent = new PropertyChangeEvent(this, "Status", Status.ON, Status.OFF);
             this.firePropertyChangeEvent(pcEvent);
         }
         this.rpm = 0;
@@ -54,7 +54,7 @@ public class Motor implements Switchable {
      */
     @Override
     public boolean isSwitchedOn() {
-        return state == State.ON && rpm > 0;
+        return state == Status.ON && rpm > 0;
     }
 
     /**
@@ -62,7 +62,7 @@ public class Motor implements Switchable {
      */
     @Override
     public boolean isSwitchedOff() {
-        return state == State.OFF;
+        return state == Status.OFF;
     }
 
     /**
@@ -71,7 +71,11 @@ public class Motor implements Switchable {
      * @param listener PropertyChangeListener.
      */
     public void addPropertyChangeListener(final PropertyChangeListener listener) {
+        if (listener != null) {
         this.changeListeners.add(listener);
+        } else {
+            throw new NullPointerException("PropertyChangeListener darf nicht null sein!");
+        }
     }
 
     /**

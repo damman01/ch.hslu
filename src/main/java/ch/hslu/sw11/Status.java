@@ -1,5 +1,5 @@
 package ch.hslu.sw11;
 
-public enum State {
+public enum Status {
     ON, OFF, FAILURE
 }

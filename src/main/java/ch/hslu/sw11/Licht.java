@@ -9,7 +9,7 @@ import java.util.*;
 
 public class Licht implements Switchable {
     
-    private State state = State.OFF;
+    private Status state = Status.OFF;
 
     private final List<PropertyChangeListener> changeListeners = new ArrayList<PropertyChangeListener>();
 
@@ -49,8 +49,8 @@ public class Licht implements Switchable {
     @Override
     public void switchon() {
         if (isSwitchedOff()) {
-            this.state = State.ON;
-            final PropertyChangeEvent pcEvent = new PropertyChangeEvent(this, "state", State.OFF, State.ON);
+            this.state = Status.ON;
+            final PropertyChangeEvent pcEvent = new PropertyChangeEvent(this, "state", Status.OFF, Status.ON);
             this.firePropertyChangeEvent(pcEvent);
         }
         
@@ -62,8 +62,8 @@ public class Licht implements Switchable {
     @Override
     public void switchoff() {
         if (isSwitchedOn()) {
-            this.state = State.OFF;
-            final PropertyChangeEvent pcEvent = new PropertyChangeEvent(this, "state", State.ON, State.OFF);
+            this.state = Status.OFF;
+            final PropertyChangeEvent pcEvent = new PropertyChangeEvent(this, "state", Status.ON, Status.OFF);
             this.firePropertyChangeEvent(pcEvent);
         }
     }
@@ -74,7 +74,7 @@ public class Licht implements Switchable {
      */
     @Override
     public boolean isSwitchedOn() {
-        return state == State.ON;
+        return state == Status.ON;
     }
 
     
@@ -83,7 +83,7 @@ public class Licht implements Switchable {
      */
     @Override
     public boolean isSwitchedOff() {
-        return state == State.OFF;
+        return state == Status.OFF;
     }
 
 }
