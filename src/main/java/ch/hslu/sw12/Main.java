@@ -4,15 +4,18 @@ import ch.hslu.sw11.*;
 
 import java.io.*;
 import java.nio.charset.Charset;
+import java.time.LocalDateTime;
 import java.util.*;
+
+import javax.print.attribute.standard.DateTimeAtCompleted;
 
 import org.apache.logging.log4j.*;
 
 public final class Main {
 
     private static Logger LOG = LogManager.getLogger(Main.class);
-    static String filelocation = ".\\src\\main\\java\\ch\\hslu\\sw12\\Testfile.txt";
-    static String temperaturFile = ".\\src\\main\\java\\ch\\hslu\\sw12\\Temperaturfile.txt";
+    static String filelocation = ".\\src\\main\\java\\ch\\hslu\\sw12\\Testfile.dat";
+    static String temperaturFile = ".\\src\\main\\java\\ch\\hslu\\sw12\\Temperaturfile.dat";
 
     public static void main(String[] args) throws IOException {
 
@@ -59,8 +62,8 @@ public final class Main {
     public static void writeTextFile(final String file) {
         try (PrintWriter pw = new PrintWriter(
                 new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file), Charset.forName("UTF-8"))));) {
-            pw.write("1, ");
-            pw.println(200.002);
+            pw.print(121354);
+            pw.print(121354.678d);
             pw.flush();
         } catch (IOException ioe) {
             LOG.error(ioe.getMessage(), ioe);
