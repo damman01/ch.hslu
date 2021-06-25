@@ -4,10 +4,7 @@ import ch.hslu.sw11.*;
 
 import java.io.*;
 import java.nio.charset.Charset;
-import java.time.LocalDateTime;
 import java.util.*;
-
-import javax.print.attribute.standard.DateTimeAtCompleted;
 
 import org.apache.logging.log4j.*;
 

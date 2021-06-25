@@ -29,7 +29,7 @@ import nl.jqno.equalsverifier.EqualsVerifier;
 import nl.jqno.equalsverifier.Warning;
 
 /**
- * Tests for {@link ch.hslu.oop.exercise.common.Temperatur}.
+ * Tests for {@link ch.hslu.sw15.common.Temperatur}.
  */
 @SuppressWarnings({"PMD.TooManyMethods", "PMD.TooManyStaticImports"})
 final class TemperaturTest {
@@ -38,7 +38,7 @@ final class TemperaturTest {
 
     /**
      * Test method for
-     * {@link ch.hslu.oop.exercise.common.Temperatur#createFromCelsius(float)}.
+     * {@link ch.hslu.sw15.common.Temperatur#createFromCelsius(float)}.
      */
     @Test
     void testCreateFromCelsiusValid() {
@@ -49,7 +49,7 @@ final class TemperaturTest {
 
     /**
      * Test method for
-     * {@link ch.hslu.oop.exercise.common.Temperatur#createFromCelsius(float)}.
+     * {@link ch.hslu.sw15.common.Temperatur#createFromCelsius(float)}.
      */
     @Test
     void testCreateFromCelsiusInvalid() {
@@ -59,7 +59,7 @@ final class TemperaturTest {
 
     /**
      * Test method for
-     * {@link ch.hslu.oop.exercise.common.Temperatur#createFromKelvin(float)}.
+     * {@link ch.hslu.sw15.common.Temperatur#createFromKelvin(float)}.
      */
     @Test
     void testCreateFromKelvinValid() {
@@ -70,7 +70,7 @@ final class TemperaturTest {
 
     /**
      * Test method for
-     * {@link ch.hslu.oop.exercise.common.Temperatur#createFromKelvin(float)}.
+     * {@link ch.hslu.sw15.common.Temperatur#createFromKelvin(float)}.
      */
     @Test
     void testCreateFromKelvinInvalidJUnit4Style() {
@@ -80,7 +80,7 @@ final class TemperaturTest {
 
     /**
      * Test method for
-     * {@link ch.hslu.oop.exercise.common.Temperatur#createFromKelvin(float)}.
+     * {@link ch.hslu.sw15.common.Temperatur#createFromKelvin(float)}.
      */
     @Test
     void testCreateFromKelvinInvalidAssertJStyle() {
@@ -91,7 +91,7 @@ final class TemperaturTest {
 
     /**
      * Test method for
-     * {@link ch.hslu.oop.exercise.common.Temperatur#Temperatur(Temperatur)}.
+     * {@link ch.hslu.sw15.common.Temperatur#Temperatur(Temperatur)}.
      */
     @Test
     void testCopyConstruktorValid() {
@@ -102,7 +102,7 @@ final class TemperaturTest {
 
     /**
      * Test method for
-     * {@link ch.hslu.oop.exercise.common.Temperatur#Temperatur(Temperatur)}.
+     * {@link ch.hslu.sw15.common.Temperatur#Temperatur(Temperatur)}.
      */
     @SuppressWarnings("unused")
     @Test
@@ -120,7 +120,7 @@ final class TemperaturTest {
 
     /**
      * Test method for
-     * {@link ch.hslu.oop.exercise.common.Temperatur#equals(Object)}.
+     * {@link ch.hslu.sw15.common.Temperatur#equals(Object)}.
      */
     @Test
     void testEqualsSame() {
@@ -130,7 +130,7 @@ final class TemperaturTest {
 
     /**
      * Test method for
-     * {@link ch.hslu.oop.exercise.common.Temperatur#equals(Object)}.
+     * {@link ch.hslu.sw15.common.Temperatur#equals(Object)}.
      */
     @Test
     void testEqualsEqual() {
@@ -141,7 +141,7 @@ final class TemperaturTest {
 
     /**
      * Test method for
-     * {@link ch.hslu.oop.exercise.common.Temperatur#equals(Object)}.
+     * {@link ch.hslu.sw15.common.Temperatur#equals(Object)}.
      */
     @Test
     void testEqualsNotEquals() {
@@ -152,7 +152,7 @@ final class TemperaturTest {
 
     /**
      * Test method for
-     * {@link ch.hslu.oop.exercise.common.Temperatur#compareTo(Temperatur)}.
+     * {@link ch.hslu.sw15.common.Temperatur#compareTo(Temperatur)}.
      */
     @Test
     void testCompareDifferent() {
@@ -164,7 +164,7 @@ final class TemperaturTest {
 
     /**
      * Test method for
-     * {@link ch.hslu.oop.exercise.common.Temperatur#compareTo(Temperatur)}.
+     * {@link ch.hslu.sw15.common.Temperatur#compareTo(Temperatur)}.
      */
     @Test
     void testCompareEqual() {
@@ -176,7 +176,7 @@ final class TemperaturTest {
 
     /**
      * Test method for
-     * {@link ch.hslu.oop.exercise.common.Temperatur#convertKelvinToCelsius(float)}.
+     * {@link ch.hslu.sw15.common.Temperatur#convertKelvinToCelsius(float)}.
      */
     @Test
     void testConvertKelvinToCelsius() {
@@ -185,7 +185,7 @@ final class TemperaturTest {
 
     /**
      * Test method for
-     * {@link ch.hslu.oop.exercise.common.Temperatur#convertCelsiusToKelvin(float)}.
+     * {@link ch.hslu.sw15.common.Temperatur#convertCelsiusToKelvin(float)}.
      */
     @Test
     void testConvertKelvinToCelsiusInvalid() {
@@ -193,7 +193,7 @@ final class TemperaturTest {
     }
 
     /**
-     * Test method for {@link ch.hslu.oop.exercise.common.Temperatur#toString()}.
+     * Test method for {@link ch.hslu.sw15.common.Temperatur#toString()}.
      */
     @Test
     void testToString() {

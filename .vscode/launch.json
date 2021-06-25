@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch SwitchGuiAwtDemo",
+            "request": "launch",
+            "mainClass": "ch.hslu.sw15.gui.awt.SwitchGuiAwtDemo",
+            "projectName": "oop_exercises"
+        },
+        {
+            "type": "java",
+            "name": "Launch SwitchGuiJavaFxDemo",
+            "request": "launch",
+            "mainClass": "ch.hslu.sw15.gui.javafx.SwitchGuiJavaFxDemo",
+            "projectName": "oop_exercises"
+        },
+        {
+            "type": "java",
             "name": "Launch Main",
             "request": "launch",
             "mainClass": "ch.hslu.sw12.Main",
