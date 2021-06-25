@@ -80,7 +80,7 @@ public final class Main {
             } catch (IOException ioe) {
                 LOG.error(ioe.getMessage(), ioe);
             }
-        }
+        } 
     }
 
 }
