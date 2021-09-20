@@ -1,14 +1,14 @@
-package ch.hslu.sw10;
+package ch.hslu.sw11;
 
 import java.util.Scanner;
 
 import org.apache.logging.log4j.*;
 
-public class App {
+public class AppW11 {
 
-    private static Logger LOG = LogManager.getLogger(App.class);
+    private static Logger LOG = LogManager.getLogger(AppW11.class);
 
-    public App() {
+    public AppW11() {
     }
 
     public static void main(String[] args) {

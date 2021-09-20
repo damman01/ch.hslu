@@ -230,6 +230,12 @@
             <groupId>nl.jqno.equalsverifier</groupId>
             <artifactId>equalsverifier</artifactId>
         </dependency>
+    
+      <dependency>
+        <groupId>cz.cesnet.cloud</groupId>
+        <artifactId>jocci-core</artifactId>
+        <version>0.2.4</version>
+      </dependency>
     </dependencies>
 
     <build>
