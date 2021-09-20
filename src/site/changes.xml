@@ -21,6 +21,11 @@
         <author email="roland.gisler@hslu.ch">Roland Gisler</author>
     </properties>
     <body>
+        <release version="2.7.0" date="2021-09-16" description="Release für OOP/AD/SWDE/VSK/APPE im 21HS.">
+            <action dev="zbgisler" type="add">
+                Dependencies und Plugins aktualisiert (JDK 11).
+            </action>
+        </release>
         <release version="2.6.1" date="2021-02-16" description="Release für OOP/AD/SWDE/VSK/APPE im 21FS.">
             <action dev="zbgisler" type="add">
                 Dependencies und Plugins aktualisiert.

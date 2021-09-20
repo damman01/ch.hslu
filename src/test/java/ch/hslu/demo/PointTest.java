@@ -83,7 +83,7 @@ final class PointTest {
      */
     @Test
     void testGetQuadrantXAchse() {
-        assertThat(new Point(0, 1).getQuadrant()).isEqualTo(0);
+        assertThat(new Point(0, 1).getQuadrant()).isZero();
     }
 
     /**
@@ -91,7 +91,7 @@ final class PointTest {
      */
     @Test
     void testGetQuadrantYAchse() {
-        assertThat(new Point(1, 0).getQuadrant()).isEqualTo(0);
+        assertThat(new Point(1, 0).getQuadrant()).isZero();
     }
 
     /**
@@ -99,7 +99,7 @@ final class PointTest {
      */
     @Test
     void testGetQuadrantNullpunkt() {
-        assertThat(new Point(0, 0).getQuadrant()).isEqualTo(0);
+        assertThat(new Point(0, 0).getQuadrant()).isZero();
     }
 
     /**
