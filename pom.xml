@@ -83,7 +83,7 @@
         <project.build.targetJdk>11</project.build.targetJdk>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>${project.build.sourceEncoding}</project.reporting.outputEncoding>
-        <project.maven.version>3.6.3</project.maven.version>
+        <project.maven.version>3.3.9</project.maven.version>
 
         <checkstyle.config.location>${project.basedir}/config/checkstyle/checkstyle.xml</checkstyle.config.location>
         <pmd.config.location>${project.basedir}/config/pmd/pmd_hslu.xml</pmd.config.location>
@@ -230,12 +230,6 @@
             <groupId>nl.jqno.equalsverifier</groupId>
             <artifactId>equalsverifier</artifactId>
         </dependency>
-    
-      <dependency>
-        <groupId>cz.cesnet.cloud</groupId>
-        <artifactId>jocci-core</artifactId>
-        <version>0.2.4</version>
-      </dependency>
     </dependencies>
 
     <build>
