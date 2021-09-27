@@ -19,7 +19,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /**
- * Demo-Applikation für {@link ch.hslu.demo.Point}-Klasse.
+ * Demo-Applikation für {@link ch.hslu.oop.demo.Point}-Klasse.
  */
 public final class DemoApp {
 
