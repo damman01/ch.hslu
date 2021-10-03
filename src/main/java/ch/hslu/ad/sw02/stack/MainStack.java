@@ -14,9 +14,7 @@ public class MainStack {
 
         String title = "OUTPUT";
 
-        JOptionPane.showMessageDialog(null, meinStack.pop(), title, INFORMATION_MESSAGE);
-        JOptionPane.showMessageDialog(null, meinStack.pop(), title, ERROR_MESSAGE);
-        JOptionPane.showMessageDialog(null, meinStack.pop(), title, WARNING_MESSAGE);
+        JOptionPane.showMessageDialog(null, meinStack.pop() + meinStack.pop() + meinStack.pop() + "!", title, INFORMATION_MESSAGE);
 
     }
 }

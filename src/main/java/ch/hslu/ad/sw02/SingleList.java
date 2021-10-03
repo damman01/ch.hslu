@@ -18,12 +18,6 @@ public class SingleList<T> implements List<T> {
         return head;
     }
 
-    // null da nur einfach verkettet
-    @Override
-    public Node<T> getTail() {
-        return null;
-    }
-
     @Override
     public int size() {
         return size;
@@ -35,7 +29,7 @@ public class SingleList<T> implements List<T> {
             throw new IllegalArgumentException();
         }
 
-        head = new Node<>(element, head, null);
+        head = new Node<>(element, head);
         size++;
         return head;
     }
