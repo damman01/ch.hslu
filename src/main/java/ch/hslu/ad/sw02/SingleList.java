@@ -37,7 +37,7 @@ public class SingleList<T> implements List<T> {
     @Override
     public void remove(T element) {
         if (head == null || element == null) {
-            throw new NoSuchElementException("Zu löschende Elemente können nicht null sein!");
+            throw new NoSuchElementException("Zu löschende Liste und Elemente können nicht null sein!");
         }
         Node<T> currentNode = head;
         Node<T> nextElement = currentNode.getNext();

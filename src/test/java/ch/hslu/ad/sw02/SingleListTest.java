@@ -46,7 +46,6 @@ public class SingleListTest {
 
 	@Test
 	void removeExistingElementTest() {
-		// given
 		List<String> testList = new SingleList<>();
 		String firstElement = "Element 1";
 		String secondElement = "Element 2";
@@ -55,13 +54,24 @@ public class SingleListTest {
 		testList.add(secondElement);
 		testList.add(thirdElement);
 
-		// when
 		testList.remove(secondElement);
-
-		// then
 		assertEquals(thirdElement, testList.getHead().getData());
 		assertEquals(firstElement, testList.getHead().getNext().getData());
 		assertEquals(2, testList.size());
+	}
+
+	@Test
+	void removeNotExistingElementTest() {
+		List<String> testList = new SingleList<>();
+		String firstElement = "Element 1";
+		String secondElement = "Element 2";
+		String thirdElement = "Element 3";
+		testList.add(firstElement);
+		testList.add(secondElement);
+		testList.add(thirdElement);
+
+		assertThrows(NoSuchElementException.class, () -> testList.remove("NotExistingElement"));
+		assertEquals(3, testList.size());
 	}
 
 	@Test
