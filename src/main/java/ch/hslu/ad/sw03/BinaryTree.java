@@ -2,6 +2,12 @@ package ch.hslu.ad.sw03;
 
 public class BinaryTree<T> implements Tree<T> {
 
+    /**
+     * 
+     */
+    public BinaryTree() {
+    }
+
     @Override
     public int compareTo(T o) {
         // TODO Auto-generated method stub

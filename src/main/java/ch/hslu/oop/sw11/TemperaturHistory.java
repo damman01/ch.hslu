@@ -22,11 +22,11 @@ public class TemperaturHistory implements Comparable<TemperaturHistory> {
             if (temp.getDegreeKelvin() > this.maxTemp().getDegreeKelvin()) {
                 final TemperaturNewEvent tcEvent = new TemperaturNewEvent(this, NewValueType.MAXTEMP, this.maxTemp(), temp);
                 this.fireTemperaturChangeEvent(tcEvent);
-                LOG.debug("New" + tcEvent.getNewValueType());
+                LOG.debug("New {}" ,tcEvent.getNewValueType());
             } else if (temp.getDegreeKelvin() < this.minTemp().getDegreeKelvin()) {
                 final TemperaturNewEvent tcEvent = new TemperaturNewEvent(this, NewValueType.MINTEMP, this.minTemp(), temp);
                 this.fireTemperaturChangeEvent(tcEvent);
-                LOG.debug("New" + tcEvent.getNewValueType());
+                LOG.debug("New {}" ,tcEvent.getNewValueType());
             }
         }
         else {
@@ -41,7 +41,7 @@ public class TemperaturHistory implements Comparable<TemperaturHistory> {
     }
 
     public Temperatur maxTemp() {
-        if (verlauf.size() > 0) {
+        if (!verlauf.isEmpty()) {
             return Collections.max(verlauf);
         } else {
             return null;
@@ -49,7 +49,7 @@ public class TemperaturHistory implements Comparable<TemperaturHistory> {
     }
 
     public Temperatur minTemp() {
-        if (verlauf.size() > 0) {
+        if (!verlauf.isEmpty()) {
             return Collections.min(verlauf);
         } else {
             return null;
@@ -61,7 +61,7 @@ public class TemperaturHistory implements Comparable<TemperaturHistory> {
     }
 
     public Temperatur averageTemp() {
-        if (verlauf.size() > 0) {
+        if (!verlauf.isEmpty()) {
             final Iterator<Temperatur> iterator = verlauf.iterator();
             float sum = 0;
             while (iterator.hasNext()) {
@@ -69,8 +69,7 @@ public class TemperaturHistory implements Comparable<TemperaturHistory> {
                 sum += temp.getDegreeKelvin();
             }
             sum /= verlauf.size();
-            Temperatur averageTemp =  Temperatur.createFromKelvin(sum);
-            return averageTemp;
+            return Temperatur.createFromKelvin(sum);
             
         } else {
             return null;

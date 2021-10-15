@@ -3,31 +3,32 @@ package ch.hslu.oop.sw12;
 import ch.hslu.oop.sw11.*;
 
 import java.io.*;
-import java.nio.charset.Charset;
+import java.nio.charset.*;
 import java.util.*;
 
 import org.apache.logging.log4j.*;
 
 public final class Main {
 
-    private static Logger LOG = LogManager.getLogger(Main.class);
-    static String filelocation = ".\\src\\main\\java\\ch\\hslu\\oop\\sw12\\Testfile.dat";
-    static String temperaturFile = ".\\src\\main\\java\\ch\\hslu\\oop\\sw12\\Temperaturfile.dat";
+    private static Logger lLOG = LogManager.getLogger(Main.class);
+    static String filelocation = ".\\ch.hslu\\src\\main\\java\\ch\\hslu\\oop\\sw12\\Testfile.dat";
+    static String temperaturFile = ".\\ch.hslu\\src\\main\\java\\ch\\hslu\\oop\\sw12\\Temperaturfile.dat";
 
     public static void main(String[] args) throws IOException {
 
         writeTextFile(filelocation);
 
         final FileInputStream fis = new FileInputStream(filelocation);
-        final DataInputStream dis = new DataInputStream(fis);
-        final Double value = dis.readDouble();
-        final Byte byteValue = dis.readByte();
-        dis.close();
+        try (final DataInputStream dis = new DataInputStream(fis)) {
+            final Double value = dis.readDouble();
+            final Byte byteValue = dis.readByte();
+            lLOG.trace("Double from File: {}", value);
+            lLOG.trace("Byte from File:   {}", byteValue);
 
-        LOG.trace("Double from File: {}", value);
-        LOG.trace("Byte from File:   {}", byteValue);
+        } catch (IOException e) {
+            lLOG.debug("File ist fehlerhaft!");
+        }
         
-
         readTextFile(filelocation);
 
         String input;
@@ -38,18 +39,18 @@ public final class Main {
             input = scanner.next();
             if (!input.equals("exit")) {
                 try {
-                    float tempValue = Float.valueOf(input);
+                    float tempValue = Float.parseFloat(input);
                     verlauf.addTemp(Temperatur.createFromKelvin(tempValue));
-                    LOG.trace("Temperatur= " + input);
+                    lLOG.trace("Temperatur= {}" ,input);
                 } catch (IllegalArgumentException ex) {
-                    LOG.trace("Keine Zahl eingegeben");
-                } finally {
+                    lLOG.trace("Keine Zahl eingegeben");
                 }
+                
             }
         } while (!input.equals("exit"));
 
         try (PrintWriter pwTemp = new PrintWriter(
-                new BufferedWriter(new OutputStreamWriter(new FileOutputStream(temperaturFile), Charset.forName("UTF-8"))));) {
+                new BufferedWriter(new OutputStreamWriter(new FileOutputStream(temperaturFile), StandardCharsets.UTF_8)));) {
             pwTemp.println(verlauf);
         }
         scanner.close();
@@ -58,27 +59,27 @@ public final class Main {
 
     public static void writeTextFile(final String file) {
         try (PrintWriter pw = new PrintWriter(
-                new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file), Charset.forName("UTF-8"))));) {
+                new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file), StandardCharsets.UTF_8)));) {
             pw.print(121354);
             pw.print(121354.678d);
             pw.flush();
         } catch (IOException ioe) {
-            LOG.error(ioe.getMessage(), ioe);
+            lLOG.error(ioe.getMessage(), ioe);
         }
-        LOG.trace("file {} created", file);
+        lLOG.trace("file {} created", file);
     }
 
     public static void readTextFile(final String file) {
         if (new File(file).exists()) {
             try (BufferedReader br = new BufferedReader(
-                    new InputStreamReader(new FileInputStream(file), Charset.forName("UTF-8")))) {
+                    new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_8))) {
                 String line;
-                LOG.trace("Reading from {}", file);
+                lLOG.trace("Reading from {}", file);
                 while ((line = br.readLine()) != null) {
-                    LOG.trace(line);
+                    lLOG.trace(line);
                 }
             } catch (IOException ioe) {
-                LOG.error(ioe.getMessage(), ioe);
+                lLOG.error(ioe.getMessage(), ioe);
             }
         } 
     }

@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 
 public class TemperaturHistory implements Comparable<TemperaturHistory>{
-    public List<Temperatur> verlauf = new ArrayList<>();
+    List<Temperatur> verlauf = new ArrayList<>();
 
     public void clear() {
         this.verlauf.clear();
@@ -22,7 +23,7 @@ public class TemperaturHistory implements Comparable<TemperaturHistory>{
     }
 
     public float maxTemp() {
-        if (verlauf.size() > 0) {
+        if (!verlauf.isEmpty()) {
             return Collections.max(verlauf).getDegreeKelvin();
         } else {
             return -1;
@@ -30,7 +31,7 @@ public class TemperaturHistory implements Comparable<TemperaturHistory>{
     }
 
     public float minTemp() {
-        if (verlauf.size() > 0) {
+        if (!verlauf.isEmpty()) {
             return Collections.min(verlauf).getDegreeKelvin();
         } else {
             return -1;
@@ -42,7 +43,7 @@ public class TemperaturHistory implements Comparable<TemperaturHistory>{
     }
 
     public float averageTemp() {
-        if (verlauf.size() > 0) {
+        if (!verlauf.isEmpty()) {
             final Iterator<Temperatur> iterator = verlauf.iterator();
             float sum = 0;
             while (iterator.hasNext()) {
@@ -56,13 +57,29 @@ public class TemperaturHistory implements Comparable<TemperaturHistory>{
     }
 
     @Override
-    public int compareTo(final TemperaturHistory other) {
-        return Integer.compare(this.verlauf.size(), other.verlauf.size());
-
+    public int compareTo(TemperaturHistory oHistory){
+            return Integer.compare(this.verlauf.size(), oHistory.verlauf.size());
     }
 
     public Iterator<Temperatur> iterator() {
         return verlauf.iterator();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(verlauf);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof TemperaturHistory)) {
+            return false;
+        }
+        TemperaturHistory other = (TemperaturHistory) obj;
+        return Objects.equals(verlauf, other.verlauf);
     }
     
 }
