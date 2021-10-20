@@ -92,7 +92,8 @@ public class BinaryTreeTest {
         lLOG.trace("testTreeSet" + testTree.toString());
         testTree.add(7);
 
-
+        assertThat(testTree.first()).isOne();
+        assertThat(testTree.last()).isEqualTo(8);
         lLOG.trace("testTreeSet" + testTree.toString());
 
 
