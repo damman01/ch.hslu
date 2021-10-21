@@ -2,7 +2,7 @@ package ch.hslu.ad.sw02.queue;
 
 import java.util.Arrays;
 
-public class QueueArray implements Queue<Character>{
+public class QueueArray implements Queue<Character> {
 
     private static final int DEFAULT_ARRAY_INDEX = 8;
     private final Character[] queue;
@@ -32,7 +32,7 @@ public class QueueArray implements Queue<Character>{
     @Override
     public void add(Character element) {
         if (index() + 1 > maxindex) {
-            throw new IllegalStateException("queue is full, can't add another element");
+            throw new IllegalStateException("Queue is full, can't add another element");
         }
         tailIndex = getNewIndex(tailIndex);
         queue[tailIndex] = element;
@@ -42,7 +42,7 @@ public class QueueArray implements Queue<Character>{
     @Override
     public Character remove() {
         if (isQueueEmpty()) {
-            throw new IllegalStateException("queue is empty, nothing to remove");
+            throw new IllegalStateException("Queue is empty, nothing to remove");
         }
         index--;
         Character element = queue[headIndex];
@@ -64,16 +64,10 @@ public class QueueArray implements Queue<Character>{
         return index;
     }
 
-    /* (non-Javadoc)
-     * @see java.lang.Object#toString()
-     */
-    
     @Override
     public String toString() {
         return "QueueArray [headIndex=" + headIndex + ", index=" + index + ", maxindex=" + maxindex + ", queue="
                 + Arrays.toString(queue) + ", tailIndex=" + tailIndex + "]";
     }
 
-    
-    
 }
