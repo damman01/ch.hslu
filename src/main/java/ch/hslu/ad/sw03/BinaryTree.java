@@ -9,8 +9,9 @@ public class BinaryTree<T extends Comparable<T>> implements Tree<T> {
 
     private Comparator<T> comparator;
     TreeNode<T> root = null;
-    
+
     TreeNode<T> foundNode = null;
+    private boolean toRemove = false;
     int level = 0;
 
     /**
@@ -23,7 +24,6 @@ public class BinaryTree<T extends Comparable<T>> implements Tree<T> {
     public BinaryTree() {
         this.comparator = null;
     }
-
 
     @Override
     public void add(final T elemenT) {
@@ -40,7 +40,16 @@ public class BinaryTree<T extends Comparable<T>> implements Tree<T> {
 
     }
 
-    public TreeNode<T> search(TreeNode<T> parentNode, T elementT) {
+    public boolean search(T elemenT) {
+        
+        TreeNode<T> replacementNode = null;
+        foundNode=replacementNode;
+        search(root, elemenT);
+        if(foundNode != null) 
+        {return foundNode.getElement() == elemenT;} else return false;
+    }
+
+    private TreeNode<T> search(TreeNode<T> parentNode, T elementT) {
         if (parentNode == null) {
             parentNode = new TreeNode<>(elementT);
 
@@ -56,6 +65,10 @@ public class BinaryTree<T extends Comparable<T>> implements Tree<T> {
             lLOG.trace("level: {} found: {}", level, elementT);
             foundNode = parentNode;
             level--;
+            if (toRemove) {
+                toRemove = false;
+                parentNode = null;
+            }
             return parentNode;
         }
 
@@ -67,14 +80,16 @@ public class BinaryTree<T extends Comparable<T>> implements Tree<T> {
          */
         if (parentNode.getElement().compareTo(elementT) < 0) {
             if (parentNode.hasRightChild()) {
-                lLOG.trace("level: {} Search: {}", level, elementT);
+                lLOG.trace("level: {} SearchRight: {}", level, elementT);
                 parentNode.setRightNode(search(parentNode.getRightNode(), elementT));
                 level--;
                 return parentNode;
             } else {
-                parentNode.setRightNode(new TreeNode<>(elementT));
-                lLOG.trace("level: {} rightChild: {}", level, elementT);
-                level--;
+                if (!toRemove) {
+                    parentNode.setRightNode(new TreeNode<>(elementT));
+                    lLOG.trace("level: {} rightChild: {}", level, elementT);
+                    level--;
+                }
                 return parentNode;
             }
         }
@@ -85,14 +100,16 @@ public class BinaryTree<T extends Comparable<T>> implements Tree<T> {
          */
         if (parentNode.getElement().compareTo(elementT) > 0) {
             if (parentNode.hasLeftChild()) {
-                lLOG.trace("level: {} Search: {}", level, elementT);
+                lLOG.trace("level: {} SearchLeft: {}", level, elementT);
                 parentNode.setLeftNode(search(parentNode.getLeftNode(), elementT));
                 level--;
                 return parentNode;
             } else {
-                parentNode.setLeftNode(new TreeNode<>(elementT));
-                lLOG.trace("level: {} leftChild: {}", level, elementT);
-                level--;
+                if (!toRemove) {
+                    parentNode.setLeftNode(new TreeNode<>(elementT));
+                    lLOG.trace("level: {} leftChild: {}", level, elementT);
+                    level--;
+                }
                 return parentNode;
             }
         }
@@ -103,7 +120,18 @@ public class BinaryTree<T extends Comparable<T>> implements Tree<T> {
 
     @Override
     public void remove(T elementT) {
-        // TODO Auto-generated method stub
+        if (!(elementT instanceof Comparable)) {
+            throw new IllegalArgumentException();
+        }
+        TreeNode<T> newNode = null;
+
+        toRemove = true;
+
+        // position suchen
+
+        newNode = search(root, elementT);
+
+        root = newNode;
 
     }
 

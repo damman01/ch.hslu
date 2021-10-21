@@ -71,7 +71,9 @@ public class TreeNode<T extends Comparable<T>> implements Comparable<TreeNode<T>
      * @return the element
      */
     public T getElement() {
+
         return element;
+
     }
 
     /**

@@ -55,9 +55,8 @@ public class BinaryTreeTest {
         testTree.add(7);
         testTree.add(9);
 
-        testTree.search(testTree.root, 8).getElement();
 
-        assertThat(testTree.foundNode.getElement()).isEqualTo(8);
+        assertThat(testTree.search(8)).isTrue();
 
     }
 
@@ -97,6 +96,25 @@ public class BinaryTreeTest {
         lLOG.trace("testTreeSet" + testTree.toString());
 
 
+    }
+
+    @Test
+    void testRemove(){
+        BinaryTree<Integer> testTree = new BinaryTree<>();
+
+        testTree.add(4);
+        testTree.add(5);
+        testTree.add(6);
+        testTree.add(12);
+        testTree.add(8);
+        testTree.add(9);
+
+        assertThat(testTree.search(12)).isTrue();
+        testTree.remove(12);
+        
+        assertThat(testTree.search(12)).isFalse();
+
+       assertThatNullPointerException().isThrownBy(() -> testTree.foundNode.getElement());
     }
 
 }
