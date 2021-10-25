@@ -1,28 +1,25 @@
 package ch.hslu.ad.sw03;
 
-import java.util.Comparator;
 
 import org.apache.logging.log4j.*;
 
 public class BinaryTree<T extends Comparable<T>> implements Tree<T> {
     private static Logger lLOG = LogManager.getLogger(BinaryTree.class);
 
-    private Comparator<T> comparator;
     TreeNode<T> root = null;
 
     TreeNode<T> foundNode = null;
     private boolean toRemove = false;
     int level = 0;
 
-    /**
-     * @param comparator
-     */
-    public BinaryTree(Comparator<T> comparator) {
-        this.comparator = comparator;
-    }
+    
 
+
+    /**
+     * 
+     */
     public BinaryTree() {
-        this.comparator = null;
+        super();
     }
 
     @Override
@@ -48,7 +45,7 @@ public class BinaryTree<T extends Comparable<T>> implements Tree<T> {
         if(foundNode != null) 
         {return foundNode.getElement() == elemenT;} else return false;
     }
-
+    @SuppressWarnings("java:S3776")
     private TreeNode<T> search(TreeNode<T> parentNode, T elementT) {
         if (parentNode == null) {
             parentNode = new TreeNode<>(elementT);
@@ -135,6 +132,7 @@ public class BinaryTree<T extends Comparable<T>> implements Tree<T> {
 
     }
 
+    
     @Override
     public void inorder() {
         // TODO Auto-generated method stub
