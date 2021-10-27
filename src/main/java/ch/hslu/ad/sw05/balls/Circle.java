@@ -72,6 +72,14 @@ public class Circle {
     }
 
     /**
+     * @return the diameter
+     */
+    public int getDiameter() {
+        return diameter;
+    }
+
+    
+    /**
      * Make this circle visible. If it was already visible, do nothing.
      */
     public void makeVisible() {

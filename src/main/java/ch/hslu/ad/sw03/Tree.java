@@ -1,7 +1,7 @@
 package ch.hslu.ad.sw03;
 
-public interface Tree<T>{
-    
+public interface Tree<T> {
+
     /**
      * Add new elemeent
      * 
@@ -16,10 +16,4 @@ public interface Tree<T>{
      */
     public void remove(T elementT);
 
-    /**
-     * 
-     */
-    public void inorder(); 
-        
-    
 }

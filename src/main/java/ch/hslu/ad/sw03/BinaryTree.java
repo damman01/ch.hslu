@@ -1,6 +1,5 @@
 package ch.hslu.ad.sw03;
 
-
 import org.apache.logging.log4j.*;
 
 public class BinaryTree<T extends Comparable<T>> implements Tree<T> {
@@ -11,9 +10,6 @@ public class BinaryTree<T extends Comparable<T>> implements Tree<T> {
     TreeNode<T> foundNode = null;
     private boolean toRemove = false;
     int level = 0;
-
-    
-
 
     /**
      * 
@@ -38,13 +34,16 @@ public class BinaryTree<T extends Comparable<T>> implements Tree<T> {
     }
 
     public boolean search(T elemenT) {
-        
+
         TreeNode<T> replacementNode = null;
-        foundNode=replacementNode;
+        foundNode = replacementNode;
         search(root, elemenT);
-        if(foundNode != null) 
-        {return foundNode.getElement() == elemenT;} else return false;
+        if (foundNode != null) {
+            return foundNode.getElement() == elemenT;
+        } else
+            return false;
     }
+
     @SuppressWarnings("java:S3776")
     private TreeNode<T> search(TreeNode<T> parentNode, T elementT) {
         if (parentNode == null) {
@@ -129,13 +128,6 @@ public class BinaryTree<T extends Comparable<T>> implements Tree<T> {
         newNode = search(root, elementT);
 
         root = newNode;
-
-    }
-
-    
-    @Override
-    public void inorder() {
-        // TODO Auto-generated method stub
 
     }
 

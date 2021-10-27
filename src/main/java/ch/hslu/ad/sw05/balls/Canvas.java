@@ -28,6 +28,8 @@ import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.WindowConstants;
+import javax.swing.event.MouseInputAdapter;
 
 /**
  * Canvas is a class to allow for simple graphical drawing on a canvas. This is
@@ -51,13 +53,17 @@ public final class Canvas {
      *
      * @return singleton Canvas object.
      */
-    public static Canvas getCanvas() {
+    public static Canvas getCanvas(MouseInputAdapter mouseInputAdapter) {
         if (canvasSingleton == null) {
             canvasSingleton = new Canvas("Ball Demo", 600, 400,
-                    Color.white);
+                    Color.white, mouseInputAdapter);
         }
         canvasSingleton.setVisible(true);
         return canvasSingleton;
+    }
+
+    public static Canvas getCanvas() {
+        return getCanvas(null);
     }
 
     //  ----- instance part -----
@@ -77,12 +83,16 @@ public final class Canvas {
      * @param height the desired height for the canvas.
      * @param bgColor the desired background color of the canvas.
      */
-    private Canvas(String title, int width, int height, Color bgColor) {
+    private Canvas(String title, int width, int height, Color bgColor, MouseInputAdapter mouseInputAdapter) {
         frame = new JFrame();
         canvas = new CanvasPane();
         frame.setContentPane(canvas);
         frame.setTitle(title);
         frame.setLocation(30, 30);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        if (mouseInputAdapter != null) {
+            canvas.addMouseListener(mouseInputAdapter);
+        }
         canvas.setPreferredSize(new Dimension(width, height));
         backgroundColor = bgColor;
         frame.pack();
