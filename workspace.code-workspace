@@ -1,10 +1,14 @@
 {
 	"folders": [
 		{
-			"path": ".."
+			"path": "C:\\Users\\domin\\OneDrive - Hochschule Luzern (1)\\AD\\ad.hslu.spoiler"
+		},
+		{
+			"path": "."
 		}
 	],
 	"settings": {
-		"java.dependency.packagePresentation": "hierarchical"
+		"java.dependency.packagePresentation": "hierarchical",
+		"java.configuration.updateBuildConfiguration": "interactive"
 	}
 }
