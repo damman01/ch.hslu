@@ -16,26 +16,27 @@ public final class DemoFindFile {
 
     /**
      * Main-Demo.
-     *
-     * @param args not used.
+     * @param args
      */
     public static void main(String[] args) {
-        final String search = "1146.html";
+        final String search = "searchedFile.html";
         final File rootDir = new File(System.getProperty("user.home"));
         LOG.info("Start searching '{}' recursive in '{}'", search, rootDir);
 
-        LOG.info("Find '{}' concurrent in '{}'", search, rootDir);
-        final FindFileTask root = new FindFileTask(search, rootDir);
         Instant start = Instant.now();
-        String result = root.invoke();
-        LOG.info(result);
+        FindFile.findFile(search, rootDir);
         Instant end = Instant.now();
         LOG.info("Found in {} ms.", Duration.between(start, end).toMillis());
 
+        LOG.info("Search '{}' concurrent in '{}'", search, rootDir);
+        final FindFileTask root = new FindFileTask(search, rootDir);
         start = Instant.now();
-        FindFile.findFile(search, rootDir);
+        String result = root.invoke();
+        LOG.info(result);
         end = Instant.now();
         LOG.info("Found in {} ms.", Duration.between(start, end).toMillis());
+
+        
 
     }
 }

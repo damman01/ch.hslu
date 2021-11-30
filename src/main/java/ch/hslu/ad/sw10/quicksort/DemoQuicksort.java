@@ -30,47 +30,56 @@ public final class DemoQuicksort {
      * @param args not used.
      */
     public static void main(final String[] args) {
-        final int size = 300_000_000;
+        final int size = 1_000_000;
         final int[] array = new int[size];
+        final int threshold = size/13;
+
         final ForkJoinPool pool = new ForkJoinPool();
         RandomInitTask initTask = new RandomInitTask(array, 100);
         pool.invoke(initTask);
         SumTask sumTask = new SumTask(array);
         long result = pool.invoke(sumTask);
-        LOG.info("Init. Checksum : {}", result);
+        LOG.debug("Init. Checksum : {}", result);
 
-        final QuicksortTask sortTask = new QuicksortTask(array);
+        // Sortieren mit QuicksortTask
+        final QuicksortTask sortTask = new QuicksortTask(array, threshold);
         Instant start = Instant.now();
         pool.invoke(sortTask);
         Instant end = Instant.now();
-        LOG.info("QuicksortTask  : {} sec.", Duration.between(start, end).toSeconds());
+        LOG.info("QuicksortTask[s]: {}", Duration.between(start, end).toSeconds());
 
         sumTask = new SumTask(array);
         result = pool.invoke(sumTask);
-        LOG.info("Conc. Checksum : {}", result);
+        LOG.debug("Conc. Checksum : {}", result);
+
         initTask = new RandomInitTask(array, 100);
         pool.invoke(initTask);
         sumTask = new SumTask(array);
         result = pool.invoke(sumTask);
-        LOG.info("Init. Checksum : {}", result);
+        LOG.debug("Init. Checksum : {}", result);
 
+        // Sortieren mit QuickInsertionSort
         start = Instant.now();
         Sort.quickInsertionSort(array);
         end = Instant.now();
-        LOG.info("QuicksortRec.  : {} sec.", Duration.between(start, end).toSeconds());
+        LOG.info("QuicksortRec.[s]: {}", Duration.between(start, end).toSeconds());
 
         sumTask = new SumTask(array);
         result = pool.invoke(sumTask);
-        LOG.info("Recu. Checksum : {}", result);
+        LOG.debug("Recu. Checksum : {}", result);
         initTask = new RandomInitTask(array, 100);
         pool.invoke(initTask);
         sumTask = new SumTask(array);
         result = pool.invoke(sumTask);
-        LOG.info("Init. checksum : {}", result);
+        LOG.debug("Init. checksum : {}", result);
+
+        // Sortieren mit Arrays.Sort
+        start = Instant.now();
         Arrays.sort(array);
-        LOG.info("Arrays.sort    : {} sec.", '?');
+        end = Instant.now();
+        LOG.info("Arrays.sort [s]: {}", Duration.between(start, end).toMillis());
         sumTask = new SumTask(array);
         result = pool.invoke(sumTask);
-        LOG.info("Sort checksum  : {}", result);
+        LOG.debug("Sort checksum  : {}", result);
     }
 }

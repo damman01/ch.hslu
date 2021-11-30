@@ -21,7 +21,6 @@ import java.util.concurrent.RecursiveTask;
  * Codebeispiel zu RecursiveTask für die Suche eines Elementes in einem
  * int-Array.
  */
-@SuppressWarnings("serial")
 public final class RecursiveSearchTask extends RecursiveTask<Integer> {
 
     private static final int THRESHOLD = 4;

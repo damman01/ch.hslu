@@ -24,7 +24,6 @@ import org.apache.logging.log4j.*;
  * Codebeispiel zu CountedCompleter für die Suche eines Elementes in einem
  * int-Array.
  */
-@SuppressWarnings("serial")
 public final class SearchTask extends CountedCompleter<Integer> {
 
     private static final Logger LOG = LogManager.getLogger(SearchTask.class);

@@ -6,7 +6,7 @@ import java.util.concurrent.RecursiveAction;
 /**
  * Codebeispiel zu RecursiveAction für die Sortierung eines int-Arrays.
  */
-//@SuppressWarnings("serial")
+// @SuppressWarnings("serial")
 public final class MergesortTask extends RecursiveAction {
 
     private static final int DEFAULT_THRESHOLD = 50;
@@ -16,15 +16,11 @@ public final class MergesortTask extends RecursiveAction {
     private final int threshold;
 
     public MergesortTask(final int[] array) {
-        this(array, 0, array.length);
+        this(array, 0, array.length, DEFAULT_THRESHOLD);
     }
 
     public MergesortTask(final int[] array, final int threshold) {
         this(array, 0, array.length, threshold);
-    }
-
-    private MergesortTask(final int[] array, final int min, final int max) {
-        this(array, min, max, DEFAULT_THRESHOLD);
     }
 
     private MergesortTask(final int[] array, final int min, final int max, final int threshold) {
@@ -40,7 +36,7 @@ public final class MergesortTask extends RecursiveAction {
             Arrays.sort(array, min, max);
         } else {
             final int mid = min + (max - min) / 2;
-            invokeAll(new MergesortTask(array, min, mid), new MergesortTask(array, mid, max));
+            invokeAll(new MergesortTask(array, min, mid, threshold), new MergesortTask(array, mid, max, threshold));
             merge(min, mid, max);
         }
     }

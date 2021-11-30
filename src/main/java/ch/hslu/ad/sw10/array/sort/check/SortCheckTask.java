@@ -21,7 +21,6 @@ import java.util.concurrent.RecursiveTask;
  * Codebeispiel zu RecursiveTask für den Check, ob ein int-Arrays korrekt
  * sortiert wurde.
  */
-@SuppressWarnings("serial")
 public final class SortCheckTask extends RecursiveTask<Boolean> {
 
     private static final int THRESHOLD = 5;

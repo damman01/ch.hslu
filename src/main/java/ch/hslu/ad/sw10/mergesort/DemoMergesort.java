@@ -17,49 +17,54 @@ public final class DemoMergesort {
     private static final Logger LOG = LogManager.getLogger(ch.hslu.ad.sw10.mergesort.DemoMergesort.class);
 
     /**
-     * Privater Konstruktor.
-     */
-    private DemoMergesort() {
-    }
-
-    /**
      * Main-Demo.
      *
      * @param args not used.
      */
     public static void main(final String[] args) {
-        final int size = 300_000;
+        mergeSortDemo();
+        mergeSortDemo();
+        mergeSortDemo();
+    }
+
+    public static void mergeSortDemo(){
+        final int size = 100_000_000;
         final int[] array = new int[size];
+        final int threshold = 20_000_000;
+        LOG.info("Size            : {}", size);
+        LOG.info("Threshold       : {}", threshold);
 
         final ForkJoinPool pool = new ForkJoinPool();
         RandomInitTask initTask = new RandomInitTask(array, 100);
         pool.invoke(initTask);
         SumTask sumTask = new SumTask(array);
         long result = pool.invoke(sumTask);
-        LOG.info("Init. Checksum  : {}", result);
+        LOG.debug("Init. Checksum  : {}", result);
 
-        final MergesortTask sortTask = new MergesortTask(array);
+        final MergesortTask sortTask = new MergesortTask(array, threshold);
         Instant start = Instant.now();
         pool.invoke(sortTask);
         Instant end = Instant.now();
-        LOG.info("Conc. Mergesort : {} ms.", Duration.between(start, end).toMillis());
+        LOG.info("Conc. Mergesort : {}", Duration.between(start, end).toMillis());
 
         sumTask = new SumTask(array);
         result = pool.invoke(sumTask);
-        LOG.info("Merge Checksum  : {}", result);
+        LOG.debug("Merge Checksum  : {}", result);
         initTask = new RandomInitTask(array, 100);
         pool.invoke(initTask);
         sumTask = new SumTask(array);
         result = pool.invoke(sumTask);
-        LOG.info("Init. checksum  : {}", result);
+        LOG.debug("Init. checksum  : {}", result);
 
-        start = Instant.now();
-        MergesortRecursive.mergeSort(array);
-        end = Instant.now();
-        LOG.info("MergesortRec.   : {} ms.", Duration.between(start, end).toMillis());
+        //start = Instant.now();
+        //MergesortRecursive.mergeSort(array);
+        //end = Instant.now();
+        //LOG.info("MergesortRec.   : {}", Duration.between(start, end).toMillis());
 
         sumTask = new SumTask(array);
         result = pool.invoke(sumTask);
-        LOG.info("Sort checksum   : {}", result);
+        LOG.debug("Sort checksum   : {}", result);
+
+        
     }
 }

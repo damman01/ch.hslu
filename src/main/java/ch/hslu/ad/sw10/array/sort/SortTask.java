@@ -21,7 +21,6 @@ import java.util.concurrent.RecursiveAction;
 /**
  * Codebeispiel zu RecursiveAction für die Sortierung eines int-Arrays.
  */
-@SuppressWarnings("serial")
 public final class SortTask extends RecursiveAction {
 
     private static final int THRESHOLD = 5;
