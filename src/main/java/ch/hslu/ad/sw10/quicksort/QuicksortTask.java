@@ -84,7 +84,7 @@ public final class QuicksortTask extends RecursiveAction {
      * @param firstIndex  Index des ersten Zeichens
      * @param secondIndex Index des zweiten Zeichens
      */
-    private static void exchange(final int data[], final int firstIndex, final int secondIndex) {
+    private static void exchange(final int[] data, final int firstIndex, final int secondIndex) {
         int tmp = data[firstIndex];
         data[firstIndex] = data[secondIndex];
         data[secondIndex] = tmp;

@@ -93,8 +93,6 @@ public final class DemoFibonacciCalc {
      */
     public static void main(final String[] args) {
         fiboCalc();
-        fiboCalc();
-        fiboCalc();
     }
 
     public static void fiboCalc(){
@@ -110,7 +108,7 @@ public final class DemoFibonacciCalc {
         result = fiboIterative(n);
         end = Instant.now();
         LOG.info("Func. iterative  = {}", result);
-        LOG.info("Func. iterat [ms]: {}", Duration.between(start, end).toMillis());
+        LOG.info("Func. iterat [ns]: {}", Duration.between(start, end).toNanosPart());
         start = Instant.now();
         result = fiboRecursive(n);
         end = Instant.now();
